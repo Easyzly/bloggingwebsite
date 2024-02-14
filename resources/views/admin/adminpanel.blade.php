@@ -20,7 +20,7 @@
                     <div id="items">
                         @foreach($blogs as $blog)
                             <div class="border-2 border-slate-100 flex space-between">
-                                <span class="flex space-between" ><h3 class="mr-1">{{ $blog->title }}</h3>, {{ date('d-m-Y', strtotime($blog->creationdate)) }}</span>
+                                <h3>{{ $blog->title }}</h3>
                                 <div class="flex-auto"></div>
                                 <span class="flex space-between">
                                     <a class="mr-1 text-green-500" href="{{ route('page.find', $blog->id) }}">See more..</a>

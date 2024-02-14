@@ -13,7 +13,9 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
+            },bodysystem: {
+                'layout': '1fr, auto',
+            }
         },
         screens: {
             'xs' : '600px',
