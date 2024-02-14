@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'jamievangulik2006@gmail.com',
             'isAdmin' => true
         ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'testing account',
+            'email' => 'testing@gmail.com',
+            'isAdmin' => false
+        ]);
     }
 }

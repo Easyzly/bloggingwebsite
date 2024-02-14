@@ -64,7 +64,7 @@
         </div>
 
         <div class="hidden sm:flex grow"></div>
-        <a class="my-auto" href="{{ route('dashboard') }}"><img class="h-6 my-auto" src="https://cdn-icons-png.freepik.com/256/1144/1144760.png"></a>
+        <a class="my-auto" href="{{ route('profile.edit') }}"><img class="h-6 my-auto" src="https://cdn-icons-png.freepik.com/256/1144/1144760.png"></a>
 
     </div>
 </header>

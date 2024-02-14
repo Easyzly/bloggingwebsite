@@ -18,14 +18,6 @@ use App\Http\Controllers\MediaController;
 |
 */
 
-Route::get('/dashboard', function () {
-    $blogs = \App\Models\Blog::all();
-    $media = \App\Models\Media::all();
-    $projects = \App\Models\Project::all();
-
-    return view('dashboard', compact('projects', 'media', 'blogs'));
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 //Pages
 Route::get('/blogs', [PagesController::class, 'blogs'])->name('page.blog');
 Route::get('/media', [PagesController::class, 'media'])->name('page.media');
@@ -41,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     //adminpage
-    Route::get('/adminpage', [PagesController::class, 'adminpage'])->name('page.admin');
+    Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
     //Edit forms
     Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');

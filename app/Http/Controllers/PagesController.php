@@ -27,4 +27,11 @@ class PagesController extends Controller
         $media = Media::all();
         return view('media', compact('media'));
     }
+
+    public function dashboard(){
+        $blogs = Blog::all();
+        $projects = Project::all();
+        $media = Media::all();
+        return view('dashboard', compact('media','projects','blogs'));
+    }
 }
