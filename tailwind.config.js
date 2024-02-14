@@ -18,6 +18,8 @@ export default {
             }
         },
         screens: {
+            'xxs' : '400px',
+            'xsm' : '500px',
             'xs' : '600px',
             's': '800px',
             'sm' : '900px',

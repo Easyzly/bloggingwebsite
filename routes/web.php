@@ -18,14 +18,25 @@ use App\Http\Controllers\PagesController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/tailwind', function () {
-    return view('tailwind');
-});
+})->name('page.home');
+
+Route::get('/media', function () {
+    return view('media');
+})->name('page.media');
+
+Route::get('/blogs', function () {
+    return view('blog');
+})->name('page.blog');
+
+Route::get('/projecten', function () {
+    return view('project');
+})->name('page.project');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 //Pages
 Route::get('/findpage/{id}', [PagesController::class, 'findpage'])->name('page.find');
