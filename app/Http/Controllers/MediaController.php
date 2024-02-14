@@ -21,4 +21,12 @@ class MediaController extends Controller
 
        return redirect()->route('page.media');
     }
+
+    public function destroy(int $id){
+        $item = Media::find($id);
+        if($item) {
+            $item->delete();
+        }
+        return redirect()->route('dashboard');
+    }
 }

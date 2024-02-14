@@ -23,4 +23,12 @@ class ProjectController extends Controller
 
         return redirect()->route('page.project');
     }
+
+    public function destroy(int $id){
+        $project = Project::find($id);
+        if($project) {
+            $project->delete();
+        }
+        return redirect()->route('dashboard');
+    }
 }

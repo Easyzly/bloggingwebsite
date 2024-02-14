@@ -19,7 +19,11 @@ use App\Http\Controllers\MediaController;
 */
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $blogs = \App\Models\Blog::all();
+    $media = \App\Models\Media::all();
+    $projects = \App\Models\Project::all();
+
+    return view('dashboard', compact('projects', 'media', 'blogs'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Pages
@@ -47,6 +51,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
     //Destroy forms
     Route::get('/blog/destroy/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+    Route::get('/project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
+    Route::get('/media/destroy/{id}', [MediaController::class, 'destroy'])->name('media.destroy');
 });
 
 require __DIR__.'/auth.php';
