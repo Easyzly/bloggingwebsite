@@ -14,11 +14,7 @@ class Blog extends Model
         'title',
         'description',
         'content',
-        'creationdate',
-        'filename'
+        'date',
+        'imagepath'
     ];
-
-    public function comments(){
-        return $this->hasMany(Comment::class);
-    }
 }

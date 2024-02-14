@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\MediaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,43 +18,22 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('page.home');
-
-Route::get('/media', function () {
-    return view('media');
-})->name('page.media');
-
-Route::get('/blogs', function () {
-    return view('blog');
-})->name('page.blog');
-
-Route::get('/projecten', function () {
-    return view('project');
-})->name('page.project');
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-
 //Pages
+Route::get('/blogs', [PagesController::class, 'blogs'])->name('page.blog');
+Route::get('/media', [PagesController::class, 'media'])->name('page.media');
+Route::get('/projecten', [PagesController::class, 'projects'])->name('page.project');
 Route::get('/findpage/{id}', [PagesController::class, 'findpage'])->name('page.find');
 Route::get('/', [PagesController::class, 'homepage'])->name('page.home');
-//Comment systeem
-Route::post('/comment/store/{id}', [CommentController::class, 'store'])->name('comment.store');
-Route::get('/comment/update/{id}', [CommentController::class, 'update'])->name('comment.update');
-Route::get('/comment/destroy/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 Route::middleware(['auth', 'admin'])->group(function () {
     //adminpage
@@ -61,8 +42,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
     //Create forms
-    Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
     Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
+    Route::post('/media/store', [MediaController::class, 'store'])->name('media.store');
+    Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
     //Destroy forms
     Route::get('/blog/destroy/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
 });

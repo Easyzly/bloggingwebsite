@@ -19,11 +19,11 @@ class BlogController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'content' => $request->input('content'),
-            'creationdate' => $request->input('creationdate'),
-            'filename' => $imageName
+            'date' => $request->input('date'),
+            'imagepath' => $imageName
         ]);
 
-        return redirect()->route('page.admin');
+        return redirect()->route('page.blog');
     }
 
     public function edit(int $id){
