@@ -39,6 +39,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //Edit forms
     Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
+    Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
+    Route::post('/project/update/{id}', [ProjectController::class, 'update'])->name('project.update');
     //Create forms
     Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
     Route::post('/media/store', [MediaController::class, 'store'])->name('media.store');

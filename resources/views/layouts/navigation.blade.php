@@ -20,7 +20,7 @@
                             {{ __('Create') }}
                         </x-nav-link>
                         <x-nav-link :href="route('page.destroy')" :active="request()->routeIs('page.destroy')">
-                            {{ __('Remove') }}
+                            {{ __('Remove or Edit') }}
                         </x-nav-link>
                     </div>
                 </div>

@@ -54,7 +54,7 @@
 
                         <div class="w-full">
                             <p>Foto's / Thumbnail</p>
-                            <input type="file" name="image" id="image" class="w-full h-12 p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100">
+                            <input type="file" name="image" id="image" class="w-full p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100">
                         </div>
 
                         <div class="w-full">
@@ -85,7 +85,7 @@
 
                         <div class="w-full">
                             <p>Datum</p>
-                            <input type="date" name="date" id="date" class="w-full h-12 p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100" value="{{ date("Y-m-d") }}">
+                            <input type="date" name="date" id="date" class="w-full p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100" value="{{ date("Y-m-d") }}">
                         </div>
 
                         <div class="w-full">

@@ -12,22 +12,34 @@
                     <p>Blogs</p> @if($blogs->isEmpty()) ( No Blogs Found ) @endif
                     <div class="border-slate-500/10 border-y-2 py-2">
                         @foreach($blogs as $blog)
-                            <form method="GET" action="{{ route('blog.destroy', $blog->id) }}">
-                                @csrf
-                                <input name="_method" type="hidden" value="DELETE">
-                                <span>{{ $blog->title }} </span><button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='delete'> Delete</button>
-                            </form>
+                            <div class="flex align-middle">
+                                <form method="GET" action="{{ route('blog.destroy', $blog->id) }}">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <span>{{ $blog->title }} </span><button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='delete'> Delete</button>
+                                </form>
+                                <form action="{{ route('blog.edit', $blog->id) }}" method="get">
+                                    @csrf
+                                    <button type="submit" class="ml-1 text-blue-500 btn-flat btn-sm" data-toggle="tooltip" title='update'> edit</button>
+                                </form>
+                            </div>
                         @endforeach
                     </div>
                     <br><br>
                     <p>Projects</p> @if($projects->isEmpty()) ( No Projects Found ) @endif
                     <div class="border-slate-500/10 border-y-2 py-2">
                         @foreach($projects as $project)
-                            <form method="GET" action="{{ route('project.destroy', $project->id) }}">
-                                @csrf
-                                <input name="_method" type="hidden" value="DELETE">
-                                <span>{{ $project->title }} </span><button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='delete'> Delete</button>
-                            </form>
+                            <div class="flex align-middle">
+                                <form method="GET" action="{{ route('project.destroy', $project->id) }}">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <span>{{ $project->title }} </span><button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='delete'> Delete</button>
+                                </form>
+                                <form action="{{ route('project.edit', $project->id) }}" method="get">
+                                    @csrf
+                                    <button type="submit" class="ml-1 text-blue-500 btn-flat btn-sm" data-toggle="tooltip" title='update'> edit</button>
+                                </form>
+                            </div>
                         @endforeach
                     </div>
                     <br><br>

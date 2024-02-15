@@ -9,7 +9,7 @@
         <div class="grid grid-cols-1 xsm:grid-cols-2 m:grid-cols-3 m-auto gap-10 max-w-[90%] xss:max-w-md xs:max-w-xl s:max-w-2xl sm:max-w-3xl m:max-w-4xl ml:max-w-5xl l:max-w-6xl">
             @foreach ($projects as $project)
                 <a href="{{ $project->link }}" class="bg-slate-50 rounded">
-                    <img src="{{ asset('images/' . $project->imagepath) }}" class="aspect-[5/6] rounded bg-slate-500 "></img>
+                    <img src="{{ asset('images/' . $project->imagepath) }}" class="w-full rounded bg-slate-500 "></img>
                     <div class="m-auto p-2 pb-0.5 flex justify-between align-center">
                         <p class="text-gray-800/95">Project:</p>
                         <p class="text-gray-800/95">{{ $project->title }}</p>
