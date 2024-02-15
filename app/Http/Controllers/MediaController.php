@@ -20,6 +20,7 @@ class MediaController extends Controller
         ]);
 
        return redirect()->route('page.media');
+
     }
 
     public function destroy(int $id){

@@ -11,10 +11,12 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function homepage(){
-        return view('homepage');
+        $latestblog = Blog::latest("date")->first();
+        return view('homepage', compact('latestblog'));
     }
+
     public function blogs(){
-        $blogs = Blog::all();
+        $blogs = Blog::all()->sortByDesc('date');
         return view('blog', compact('blogs'));
     }
 

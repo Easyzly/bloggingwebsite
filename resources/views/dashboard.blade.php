@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="pt-12 pb-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -13,7 +13,7 @@
                         @csrf
                         <div class="w-full">
                             <p>Foto's / Thumbnail</p>
-                            <input type="file" name="image" id="image" class="w-full p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100">
+                            <input type="file" multiple name="image" id="image" class="w-full p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100">
                         </div>
 
                         <div class="w-full">
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -85,7 +85,7 @@
 
                         <div class="w-full">
                             <p>Datum</p>
-                            <input type="date" name="date" id="date" class="w-full h-12 p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100" >
+                            <input type="date" name="date" id="date" class="w-full h-12 p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100" value="{{ date("Y-m-d") }}">
                         </div>
 
                         <div class="w-full">
@@ -103,27 +103,58 @@
         </div>
     </div>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <p>Blogs</p>
+                    <p>Blogs</p> @if($blogs->isEmpty()) ( No Blogs Found ) @endif
                     @foreach($blogs as $blog)
-                        <li><a href="{{ route('blog.destroy', $blog->id) }}">Delete: {{ $blog->title }}</a></li>
+                        <form method="GET" action="{{ route('blog.destroy', $blog->id) }}">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='Delete'>Delete {{ $blog->title }}</button>
+                        </form>
                     @endforeach
-                    <br>
-                    <p>Projects</p>
+                    <p>Projects</p> @if($projects->isEmpty()) ( No Projects Found ) @endif
                     @foreach($projects as $project)
-                        <li><a href="{{ route('project.destroy', $project->id) }}">Delete: {{ $project->title }}</a></li>
+                        <form method="GET" action="{{ route('project.destroy', $project->id) }}">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='Delete'>Delete {{ $project->title }}</button>
+                        </form>
                     @endforeach
-                    <br>
-                    <p>Blogs</p>
+                    <p>Media</p> @if($media->isEmpty()) ( No Media Found ) @endif
                     @foreach($media as $item)
-                        <li><a href="{{ route('media.destroy', $item->id) }}">Delete: {{ $item->id }}</a></li>
+                        <form method="GET" action="{{ route('media.destroy', $item->id) }}">
+                            @csrf
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='Delete'>Delete {{ $item->id }}</button>
+                        </form>
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.show-alert-delete-box').click(function(event){
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                title: "Zeker weten verwijderen?",
+                icon: "warning",
+                type: "warning",
+                buttons: ["Anuleer","Ja!"],
+                confirmButtonText: 'Ja, verwijderen!'
+            }).then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 </x-app-layout>
 
