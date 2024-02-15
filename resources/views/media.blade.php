@@ -9,7 +9,7 @@
             @php $count = 0 @endphp
             @foreach ($media as $item)
                 @php $count += 1 @endphp
-                <img src="{{ asset('images/' . $item->imagepath) }}" class="mb-12">
+                <img src="{{ asset('images/' . $item->imagepath) }}" class="w-full mb-12">
             @endforeach
         </div>
     </main>

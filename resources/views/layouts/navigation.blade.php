@@ -14,9 +14,15 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    <!-- Navigation Links -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('page.create')" :active="request()->routeIs('page.create')">
+                            {{ __('Create') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('page.destroy')" :active="request()->routeIs('page.destroy')">
+                            {{ __('Remove') }}
+                        </x-nav-link>
+                    </div>
                 </div>
             </div>
             @endif
@@ -70,8 +76,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('page.create')" :active="request()->routeIs('dashboard')">
+                {{ __('create') }}
             </x-responsive-nav-link>
         </div>
 

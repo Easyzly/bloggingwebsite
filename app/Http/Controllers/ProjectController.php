@@ -29,6 +29,6 @@ class ProjectController extends Controller
         if($project) {
             $project->delete();
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('page.destroy');
     }
 }

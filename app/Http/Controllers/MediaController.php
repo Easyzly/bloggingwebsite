@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Media;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class MediaController extends Controller
 {
@@ -24,10 +25,7 @@ class MediaController extends Controller
     }
 
     public function destroy(int $id){
-        $item = Media::find($id);
-        if($item) {
-            $item->delete();
-        }
-        return redirect()->route('dashboard');
+        $item = Media::findorfail($id)->delete();
+        return redirect()->route('page.destroy');
     }
 }

@@ -30,10 +30,26 @@ class PagesController extends Controller
         return view('media', compact('media'));
     }
 
-    public function dashboard(){
+    public function create(){
         $blogs = Blog::all();
         $projects = Project::all();
         $media = Media::all();
-        return view('dashboard', compact('media','projects','blogs'));
+        return view('admin/create', compact('media','projects','blogs'));
+    }
+
+    public function destroy(){
+        $blogs = Blog::all();
+        $projects = Project::all();
+        $media = Media::all();
+        return view('admin/destroy', compact('media','projects','blogs'));
+    }
+
+    public function show($id)
+    {
+        // Retrieve the media item by ID
+        $media = Media::findOrFail($id);
+
+        // Pass the media item to the view
+        return view('show', compact('media'));
     }
 }

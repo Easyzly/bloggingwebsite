@@ -49,6 +49,6 @@ class BlogController extends Controller
         if($blog) {
             $blog->delete();
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('page.destroy');
     }
 }

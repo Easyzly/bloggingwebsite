@@ -102,59 +102,5 @@
             </div>
         </div>
     </div>
-
-    <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <p>Blogs</p> @if($blogs->isEmpty()) ( No Blogs Found ) @endif
-                    @foreach($blogs as $blog)
-                        <form method="GET" action="{{ route('blog.destroy', $blog->id) }}">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='Delete'>Delete {{ $blog->title }}</button>
-                        </form>
-                    @endforeach
-                    <p>Projects</p> @if($projects->isEmpty()) ( No Projects Found ) @endif
-                    @foreach($projects as $project)
-                        <form method="GET" action="{{ route('project.destroy', $project->id) }}">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='Delete'>Delete {{ $project->title }}</button>
-                        </form>
-                    @endforeach
-                    <p>Media</p> @if($media->isEmpty()) ( No Media Found ) @endif
-                    @foreach($media as $item)
-                        <form method="GET" action="{{ route('media.destroy', $item->id) }}">
-                            @csrf
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button type="submit" class="text-red-500 btn btn-xs btn-danger btn-flat show-alert-delete-box btn-sm" data-toggle="tooltip" title='Delete'>Delete {{ $item->id }}</button>
-                        </form>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script type="text/javascript">
-        $('.show-alert-delete-box').click(function(event){
-            var form =  $(this).closest("form");
-            var name = $(this).data("name");
-            event.preventDefault();
-            swal({
-                title: "Zeker weten verwijderen?",
-                icon: "warning",
-                type: "warning",
-                buttons: ["Anuleer","Ja!"],
-                confirmButtonText: 'Ja, verwijderen!'
-            }).then((willDelete) => {
-                if (willDelete) {
-                    form.submit();
-                }
-            });
-        });
-    </script>
 </x-app-layout>
 

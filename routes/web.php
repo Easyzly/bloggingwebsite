@@ -33,7 +33,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     //adminpage
-    Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+    Route::get('/media/{id}', [PagesController::class, 'show'])->name('media.show');
+    Route::get('/create', [PagesController::class, 'create'])->name('page.create');
+    Route::get('/remove', [PagesController::class, 'destroy'])->name('page.destroy');
     //Edit forms
     Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
