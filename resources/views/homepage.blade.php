@@ -16,16 +16,16 @@
                 <h1>Recent Blog</h1>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 bg-slate-100 mb-6 p-4 sm:aspect-[3/1] shadow-sm max-w-[90%] m-auto xss:max-w-md xs:max-w-xl s:max-w-2xl m:max-w-4xl ml:max-w-5xl l:max-w-6xl text-3xl mb-5 text-gray-800/95">
-                <div class="bg-slate-500 ">
+                <div class="bg-slate-200 aspect-[1/1.2] my-auto">
                     <img src="{{ asset('images/' . $latestblog->imagepath) }}" class="w-full h-full">
                 </div>
-                <div class="ml-4 sm:col-span-2">
+                <div class="ml-4 sm:flex sm:flex-col sm:col-span-2">
                     <div class="flex justify-between">
                         <h1 class="text-2xl">{{ $latestblog->title }}</h1>
                         <p  class="text-sm self-end">{{ $latestblog->date }}</p>
                     </div>
                     <p class="text-lg">{{ $latestblog->description }}</p>
-                    <textarea class="h-60 sm:h-custom resize-none px-0 pb-0 border-y-2 border-slate-500/10 border-x-0 bg-slate-50/0 w-full" readonly>{{ $latestblog->content }}</textarea>
+                    <textarea class="h-96 sm:grow resize-none px-0 pb-0 border-y-2 border-slate-500/10 border-x-0 bg-slate-50/0 w-full" readonly>{{ $latestblog->content }}</textarea>
                 </div>
             </div>
         @endif

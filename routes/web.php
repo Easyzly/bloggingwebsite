@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/media/{id}', [PagesController::class, 'show'])->name('media.show');
     Route::get('/create', [PagesController::class, 'create'])->name('page.create');
     Route::get('/remove', [PagesController::class, 'destroy'])->name('page.destroy');
+    Route::get('/users', [PagesController::class, 'users'])->name('page.users');
     //Edit forms
     Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
@@ -49,6 +51,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/blog/destroy/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
     Route::get('/project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
     Route::get('/media/destroy/{id}', [MediaController::class, 'destroy'])->name('media.destroy');
+    Route::get('/users/destroy/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
+    //admin settings
+    Route::get('/admin/add/{id}', [UsersController::class, 'adminmaker'])->name('admin.add');
+    Route::get('/admin/remove/{id}', [UsersController::class, 'adminremover'])->name('admin.remove');
 });
 
 require __DIR__.'/auth.php';

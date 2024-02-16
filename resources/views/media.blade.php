@@ -9,7 +9,7 @@
             @php $count = 0 @endphp
             @foreach ($media as $item)
                 @php $count += 1 @endphp
-                <img src="{{ asset('images/' . $item->imagepath) }}" class="w-full mb-12">
+                <a href="{{ route('media.show', $item->id) }}" target="_blank" class="image-link"><img src="{{ asset('images/' . $item->imagepath) }}" class="w-full mb-12"></a>
             @endforeach
         </div>
     </main>

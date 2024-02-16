@@ -22,6 +22,9 @@
                         <x-nav-link :href="route('page.destroy')" :active="request()->routeIs('page.destroy')">
                             {{ __('Remove or Edit') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('page.users')" :active="request()->routeIs('page.users')">
+                            {{ __('Users') }}
+                        </x-nav-link>
                     </div>
                 </div>
             </div>

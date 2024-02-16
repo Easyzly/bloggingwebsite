@@ -9,7 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form class="border-2 border-slate-100" action="{{ route('media.store') }}" method="post" enctype="multipart/form-data">
+                    <h1 class="mb-2 text-xl">Media Aanmaken</h1>
+                    <form class="border-2 p-2 bg-slate-50 border-slate-100" action="{{ route('media.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="w-full">
                             <p>Foto's / Thumbnail</p>
@@ -30,7 +31,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form class="border-2 border-slate-100" action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
+                    <h1 class="mb-2 text-xl">Blog Post Aanmaken</h1>
+                    <form class="border-2 p-2 bg-slate-50 border-slate-100" action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="w-full">
                             <p>Titel</p>
@@ -71,7 +73,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form class="border-2 border-slate-100" action="{{ route('project.store')}}" method="post" enctype="multipart/form-data">
+                    <h1 class="mb-2 text-xl">Project Toevoegen</h1>
+                    <form class="border-2 p-2 bg-slate-50 border-slate-100" action="{{ route('project.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="w-full">
                             <p>Titel</p>
@@ -90,7 +93,7 @@
 
                         <div class="w-full">
                             <p>Thumbnail</p>
-                            <input type="file" name="image" id="image" class="w-full p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100">
+                            <input type="file" name="image" id="image" class="w-full  p-5 mb-4 rounded border-2 border-slate-200 hover:bg-slate-100">
                         </div>
 
                         <div class="w-full">

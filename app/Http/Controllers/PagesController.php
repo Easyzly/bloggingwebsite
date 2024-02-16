@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Media;
 use App\Models\Project;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -51,5 +52,11 @@ class PagesController extends Controller
 
         // Pass the media item to the view
         return view('show', compact('media'));
+    }
+
+    public function users()
+    {
+        $users = User::all();
+        return view('admin/users', compact('users'));
     }
 }
